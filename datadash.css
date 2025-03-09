@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/*
+ * DataDash - https://github.com/gmasson/datadash/
+ * Este projeto oferece dashboards personalizáveis com suporte a temas claro e escuro, permitindo uma análise de dados intuitiva através de uma interface moderna e responsiva.
+ * Utiliza variáveis CSS para facilitar a manutenção e a customização dos estilos.
+ * 
+ * Licença MIT - http://opensource.org/licenses/MIT
+ */
+
+.datadash {
+    --text-color: #333;
+    --box-bg: #fff;
+    --box-shadow-color: rgba(0, 0, 0, 0.05);
+    --title-color: #555;
+    --content-color: #333;
+    --footer-color: #999;
+    --primary-color: #1976d2;
+    --primary-dark: #115293;
+    --success-color: #2e7d32;
+    --warning-color: #ff9800;
+    --danger-color: #d32f2f;
+    --info-color: #0097a7;
+    --tooltip-bg: rgba(0, 0, 0, 0.7);
+    --tooltip-text: #fff;
+}
+
+/* Tema escuro */
+.datadash.dark {
+    --text-color: #e0e0e0;
+    --box-bg: #1e1e1e;
+    --box-shadow-color: rgba(255, 255, 255, 0.05);
+    --title-color: #bbb;
+    --content-color: #fff;
+    --footer-color: #999;
+}
+
+.datadash * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.datadash {
+    padding: 1em;
+}
+
+.datadash .primary { 
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.datadash .success { 
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.datadash .warning { 
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.datadash .danger  { 
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.datadash .info { 
+    background-color: var(--info-color);
+    color: #fff;
+}
+
+.datadash .dashboard-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -.9em;
+}
+
+.datadash .dashboard-col {
+    flex: 1;
+    padding: .9em;
+    min-width: 300px;
+}
+
+.datadash .box {
+    background-color: var(--box-bg);
+    color: var(--content-color);
+    border-radius: .5em;
+    box-shadow: 0 2px .9em var(--box-shadow-color);
+    padding: 1.1em;
+    margin-bottom: 1.1em;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.datadash .box:hover {
+    box-shadow: 0 5px 1em rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.datadash .box[datadash-type="number"] .box-content { font-size: 2em; }
+
+.datadash .box[datadash-type="bar"],
+.datadash .box[datadash-type="pie"],
+.datadash .box[datadash-type="line"],
+.datadash .box[datadash-type="donut"],
+.datadash .box[datadash-type="radar"],
+.datadash .box[datadash-type="gauge"] {
+    padding-bottom: 3em;
+}
+
+.datadash .box-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: .9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.datadash .box-content {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.datadash .box-footer {
+    font-size: .8em;
+    color: var(--footer-color);
+    display: flex;
+    align-items: center;
+}
+
+.datadash .box.border-primary {
+    border-top: .21em solid var(--primary-color);
+}
+
+.datadash .box.border-success {
+    border-top: .21em solid var(--success-color);
+}
+
+.datadash .box.border-warning {
+    border-top: .21em solid var(--warning-color);
+}
+
+.datadash .box.border-danger  {
+    border-top: .21em solid var(--danger-color);
+}
+
+.datadash .box.border-info {
+    border-top: .21em solid var(--info-color);
+}
+
+.datadash .box.rounded { border-radius: 1em; }
+
+.datadash .box.borderless { border: none; }
+
+.datadash .box.shadow { box-shadow: 0 .3em 1.1em rgba(0, 0, 0, 0.2); }
+
+.datadash .box.flat { box-shadow: none; }
+
+/* Estilos para botões */
+.datadash .btn-dash {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 0.3em;
+}
+
+.datadash .box.gradient .btn-dash.btn-primary {
+    background: linear-gradient(-45deg, var(--base-color, var(--primary-color)), var(--dark-color, var(--primary-dark)));
+    color: #fff;
+    border: none;
+}
+
+.datadash .box.gradient .btn-dash.btn-success {
+    background: linear-gradient(-45deg, var(--base-color, var(--success-color)), var(--dark-color, var(--success-color)));
+    color: #fff;
+    border: none;
+}
+
+.datadash .box.gradient .btn-dash.btn-warning {
+    background: linear-gradient(-45deg, var(--base-color, var(--warning-color)), var(--dark-color, var(--warning-color)));
+    color: #fff;
+    border: none;
+}
+
+.datadash .box.gradient .btn-dash.btn-danger {
+    background: linear-gradient(-45deg, var(--base-color, var(--danger-color)), var(--dark-color, var(--danger-color)));
+    color: #fff;
+    border: none;
+}
+
+.datadash .box.gradient .btn-dash.btn-info {
+    background: linear-gradient(-45deg, var (--base-color, var(--info-color)), var(--dark-color, var(--info-color)));
+    color: #fff;
+    border: none;
+}
+
+.datadash .btn-dash:hover {
+    opacity: 0.9;
+}
+
+/* Estilos para inputs */
+.datadash input[type="text"],
+.datadash input[type="number"],
+.datadash input[type="email"],
+.datadash input[type="password"],
+.datadash textarea {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    margin: 0.3em;
+    font-size: 1em;
+}
+
+.datadash input:focus,
+.datadash textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Na box com .gradient, somente a borda superior exibe degradê */
+.datadash .box.gradient {
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.datadash .box.gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.21em;
+    background: linear-gradient(45deg, var(--base-color, var(--primary-color)), var(--dark-color, var(--primary-dark)));
+}
+
+.datadash .box .chart-container {
+    width: 100%;
+    height: 20rem;
+    margin-top: 1.1em;
+    position: relative;
+    overflow: visible;
+}
+
+.datadash .chart-legend {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.datadash .chart-legend .chart-label {
+    color: var(--title-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+
+.datadash .chart-legend .chart-value {
+    color: var(--content-color);
+    padding: 0 .1em;
+}
+
+.datadash .chart-legend-item {
+    display: inline-block;
+    margin: 0.5em 1em;
+}
+
+.datadash .chart-legend-item span {
+    display: inline-block;
+    min-width: .5em;
+    height: .9em;
+    margin-right: 0.5em;
+    border-radius: 2px;
+}
+
+.datadash .chart-line-legend-container {
+    color: var(--text-color);
+}
+
+.datadash .chart-bar-legend {
+    color: var(--text-color);
+}
+
+.datadash .chart-external-value {
+    position: absolute;
+    font-size: .9em;
+    color: var(--text-color);
+    font-weight: 600;
+    z-index: 2;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: color 0.3s ease;
+    text-shadow: 0 0 .5em rgba(255, 255, 255, 0.9);
+}
+
+.datadash [datadash-type="bar"] .chart-external-value {
+    top: auto;
+    bottom: 1em;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 0 transparent;
+}
+
+.datadash [datadash-type="line"] .chart-external-value {
+    top: -1em;
+}
+
+.datadash [datadash-type="pie"] .chart-external-value,
+.datadash [datadash-type="donut"] .chart-external-value {
+    margin-top: 0;
+}
+
+.datadash [datadash-type="radar"] .chart-external-value {
+    margin: 1em;
+}
+
+.datadash [datadash-type="gauge"] .chart-external-value {
+    position: absolute;
+    left: 50% !important;
+    transform: translateX(-50%);
+    bottom: 15%;
+    top: auto !important;
+    background: var(--box-bg);
+    color: var(--content-color);
+    padding: .2em .9em;
+    border-radius: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: none;
+    margin: 0;
+}
+
+.datadash .chart-point {
+    fill: var(--text-color);
+    stroke: var(--box-bg);
+    stroke-width: 2;
+}
+
+/* Cores para gradientes */
+.datadash .chart-gradient-start { stop-color: var(--base-color, var(--primary-color)); }
+
+.datadash .chart-gradient-end { stop-color: var(--dark-color, var(--primary-dark)); }
+
+/* Tooltip */
+.datadash #chartTooltip {
+    position: fixed;
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    padding: 8px .9em;
+    border-radius: .2em;
+    font-size: 0.9em;
+    pointer-events: none;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 2px .2em rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+    white-space: nowrap;
+    margin-left: -1.4rem;
+}
+
+.datadash #chartTooltip::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-color: var(--tooltip-bg) transparent transparent;
+    top: 100%;
+    left: 0;
+    transform: translateX(50%);
+}
+

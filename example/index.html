@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>DataDash - Dashboard com Valores de Exemplo</title>
+	<link rel="stylesheet" href="../datadash.css" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
+		}
+		
+		header {
+			padding: 2rem 0;
+			text-align: center;
+		}
+
+		header #darkModeToggle {
+			padding: .5em 1em;
+			border: none;
+			border-radius: .3em;
+			background-color: #3907b0;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		footer {
+			text-align: center;
+			padding: 1rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>DataDash Demo</h1>
+		<button id="darkModeToggle">Alternar Tema</button>
+	</header>
+	
+	<main class="datadash">
+		<!-- Indicadores Numéricos -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box border-success" 
+						 datadash-type="number" 
+						 datadash-title="Números de Exemplo" 
+						 datadash-content="352">
+					Conteúdo original que pode ser exibido abaixo.
+				</div>
+			</div>
+			<div class="dashboard-col">
+				<div class="box border-primary" 
+						 datadash-type="number" 
+						 datadash-title="Números de Exemplo em Reais" 
+						 datadash-content="5.8843,50"
+						 datadash-suffix=" /mês" 
+						 datadash-format="brl">
+				</div>
+			</div>
+			<div class="dashboard-col">
+				<div class="box border-success" 
+						 datadash-type="number" 
+						 datadash-title="Números de Exemplo em Dólar" 
+						 datadash-content="1000000"
+						 datadash-format="usd">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Gráfico de Barras -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box border-warning" 
+						 datadash-type="bar" 
+						 datadash-title="Gráfico de Barras" 
+						 datadash-data='[{"label":"Jan","value":65},{"label":"Fev","value":59},{"label":"Mar","value":80},{"label":"Abr","value":81},{"label":"Mai","value":56},{"label":"Jun","value":55}]'
+						 datadash-prefix="R$ "
+						 datadash-format="int">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Gráfico de Pizza e Donut -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box gradient" 
+						 datadash-type="pie" 
+						 datadash-title="Pizza de Exemplo" 
+						 datadash-data='[{"label":"Produto A","value":30},{"label":"Produto B","value":15},{"label":"Produto C","value":55}]'
+						 datadash-prefix=""
+						 datadash-suffix="%"
+						 datadash-format="int">
+				</div>
+			</div>
+			<div class="dashboard-col">
+				<div class="box gradient" 
+						 datadash-type="donut" 
+						 datadash-title="Donut de Exemplo" 
+						 datadash-data='[{"label":"Segmento A","value":40},{"label":"Segmento B","value":35},{"label":"Segmento C","value":25}]'
+						 datadash-prefix=""
+						 datadash-suffix="%"
+						 datadash-format="int">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Gráfico Radar e Gauge -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box gradient" 
+						 datadash-type="radar" 
+						 datadash-title="Radar de Indicadores" 
+						 datadash-data='[{"label":"A","value":80},{"label":"B","value":65},{"label":"C","value":90},{"label":"D","value":70},{"label":"E","value":50}]'
+						 datadash-prefix=""
+						 datadash-suffix=""
+						 datadash-format="int">
+				</div>
+			</div>
+			<div class="dashboard-col">
+				<div class="box gradient" 
+						 datadash-type="gauge" 
+						 datadash-title="Gauge de Performance" 
+						 datadash-data='{"value":75,"min":0,"max":100}'
+						 datadash-prefix=""
+						 datadash-suffix="%"
+						 datadash-format="dec"
+						 datadash-color="#4BC0C0">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Gráfico de Linha -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box border-info gradient"
+						 datadash-type="line" 
+						 datadash-title="Tendência de Vendas" 
+						 datadash-data='[
+							 [{"label":"Jul","value":120.556},{"label":"Ago","value":180},{"label":"Set","value":90.75},{"label":"Out","value":220},{"label":"Nov","value":160},{"label":"Dez","value":300.1234}],
+							 [{"label":"Jul","value":150},{"label":"Ago","value":190},{"label":"Set","value":200},{"label":"Out","value":290},{"label":"Nov","value":190},{"label":"Dez","value":390}],
+							 [{"label":"Jul","value":50},{"label":"Ago","value":100},{"label":"Set","value":80},{"label":"Out","value":200},{"label":"Nov","value":140},{"label":"Dez","value":290}]
+							 ]'
+						 datadash-prefix="R$ "
+						 datadash-format="float">
+				</div>
+			</div>
+		</div>
+		
+		<!-- Botões -->
+		<div class="dashboard-row">
+			<div class="dashboard-col">
+				<div class="box" datadash-title="Ações">
+					<button class="btn-dash primary" datadash-tooltip="Ação primária">Primary</button>
+					<button class="btn-dash success" datadash-tooltip="Ação de sucesso">Success</button>
+					<button class="btn-dash warning" datadash-tooltip="Ação de aviso">Warning</button>
+					<button class="btn-dash danger" datadash-tooltip="Ação de perigo">Danger</button>
+					<button class="btn-dash info" datadash-tooltip="Informação">Info</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Refresh da página -->
+		<div>
+			<span datadash-type="refresh" datadash-prefix="Atualizado às " datadash-refresh="50"></span>
+		</div>
+	</main>
+	
+	<footer>
+		<p>Página de Exemplo - <a href="https://github.com/gmasson/datadash">DataDash</a></p>
+	</footer>
+
+	<!-- Script para alternar o tema -->
+	<script>
+		document.getElementById('darkModeToggle').addEventListener('click', () => {
+			document.querySelector('.datadash').classList.toggle('dark');
+		});
+	</script>
+
+	<script src="../datadash.js"></script>
+</body>
+</html>
